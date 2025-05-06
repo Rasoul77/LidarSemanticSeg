@@ -36,8 +36,9 @@ Ensure you have the following installed:
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
-    cd your-repository-name
+    git clone [https://github.com/Rasoul77/LidarSemanticSeg.git](https://github.com/Rasoul77/LidarSemanticSeg.git)
+    
+    cd LidarSemanticSeg
     ```
 
 2.  Install the required Python packages:
@@ -47,22 +48,65 @@ Ensure you have the following installed:
 
 ### Dataset Preparation
 
-**[Instructions on how to prepare your lidar dataset will be added here.]**
+Download [SemanticKitti](https://www.semantic-kitti.org/dataset.html) dataset locally, then from this repo, open `code/configs/data_config.yaml` and update `seq_dir`'s value with the full path to the `sequences` folder of the SemanticKitti dataset,
+```
+seq_dir: "full/path/to/SemanticKITTI/dataset/sequences"
+```
 
-Refer to the `data` directory for data loading and dataset-specific configurations.
+#### Run Statistics Calculations
+In order to standardize the input data, we need to calcualte `mean` and `std` of the training set. The script `code/tools/calc_trainset_stat.py` implements a memory efficient algorithm to calculate the statistics of the training set data. You need to run this script so that the calculated statistics will be written to the `data` folder and be used during training and evaluation.
+```
+cd code
+python3 -m tools.calc_trainset_stat
+```
+
+#### Run Rare-object Database Creator
+In order to generate new data using rare-object injection augmentation, we need to create a database of such objects first. The script `code/tools/extract_rare_objects.py` implements the algorithm, and it writes the extracted objects to the folder `code/data/objects_db`.
+```
+cd code
+python3 -m tools.extract_rare_objects
+```
 
 ### Configuration
 
-The project utilizes YAML files for configuration. You can find example configuration files in the `configs` directory.
+The project utilizes YAML files for configuration. You can find example configuration files in the `code/configs` directory.
 
 * `data_config.yaml`: Contains settings related to the dataset, such as file paths, class mappings, and data augmentation parameters.
 * `darknet53.yaml`: An example configuration for a Darknet53-based segmentation model.
 
-**[More details about the configuration options will be added here.]**
-
 ### Training
 
-To train a model, use the `train.py` script with the desired configuration file:
+To train a model, use the `train.py` script with the desired configuration file and optional `wandb` logging, for example:
 
 ```bash
-python train.py --config configs/your_config.yaml
+cd code
+python3 train.py --config_name darknet53.yaml --use-wandb --name unet_darknet53_40epochs
+```
+
+You should see a progress reporting at the end of each epoch like this:
+
+```
+...
+Epoch35/40 | Train > Epoch Loss: 0.6682 Time: 03:23 | Eval > Epoch Loss: 0.7265 SCORE: 51.34% Time: 00:40
+Per Class Score:
+car            82.950%
+bicycle        36.634%
+motorcycle     39.490%
+truck          60.984%
+other-vehicle  23.982%
+person         55.955%
+bicyclist      61.259%
+motorcyclist   0.150%
+road           87.059%
+parking        38.937%
+sidewalk       75.297%
+other-ground   1.081%
+building       77.224%
+fence          39.945%
+vegetation     74.949%
+trunk          58.298%
+terrain        63.558%
+pole           59.270%
+traffic-sign   38.455%
+...
+```
