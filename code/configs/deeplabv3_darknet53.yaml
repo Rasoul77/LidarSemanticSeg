@@ -1,0 +1,60 @@
+seed: null
+
+model:
+  base: "DeepLabV3"
+  encoder: "tu-darknet53"
+  weights: null  
+  num_classes: 20
+  in_channels: 5
+  load: null
+
+train: 
+  root_chkpt: "./pt"  
+  deterministic: False
+  learning_rate: 0.01
+  weight_decay: 0.001
+  num_epochs: 40
+  batch_size: 16
+  num_workers: 8
+  scheduler:  
+    enabled: True
+    num_warmup_epochs: 1.0
+    num_cycles: 0.45
+  aug:
+    prob: 0.5
+    inst_prob: 0.5
+    cutmix_prob: 0.5
+    num_objects_per_cat:
+      - 2
+      - 10
+  loss:
+    function:
+      - "jaccard"
+      - 1.0
+    ignore_idx: -100
+
+eval:
+  batch_size: 8
+  num_workers: 8
+  print_per_class_score: True  
+  post_process:
+    enabled: False
+  knn:
+    num_nearest: 5
+    search: 5
+    sigma: 1.0
+    cut_off: 1.0
+  save_projected_preds: True
+
+infer:
+  batch_size: 8
+  num_workers: 8
+  output_dir: "./infer_results"
+  post_process:
+    enabled: True
+  knn:
+    num_nearest: 5
+    search: 5
+    sigma: 1.0
+    cut_off: 1.0
+  save_projected_preds: True
