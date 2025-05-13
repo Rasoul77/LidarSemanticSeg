@@ -5,7 +5,7 @@
 [![Python Version](https://img.shields.io/badge/Python-%E2%89%A53.10-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch Version](https://img.shields.io/badge/PyTorch-%E2%89%A52.1-brightgreen.svg)](https://pytorch.org/)
 
-![Inference on semanticKitti Ealuation Set ](images/animated.gif)
+![Inference on semanticKitti Ealuation Set ](images/EvaluationSet.gif)
 
 ## Overview
 
