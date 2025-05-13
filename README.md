@@ -11,6 +11,8 @@
 
 This repository provides code for semantic segmentation of lidar point clouds on the SemanticKitti dataset using range image representations. By transforming sparse 3D points into dense 2D images, efficient 2D CNNs can perform pixel-wise classification corresponding to the 3D points' semantic labels. Prior work on SemanticKitti has shown that insufficient training data limits model generalization. As traditional augmentation has little effect on Range Images, this code implements a novel augmentation strategy for rare-object classes, combined with CutMix. This approach, which involves extracting rare objects, storing them in a database, and injecting them into Range Images during training, creates new data that significantly improves model generalization. It achieves a notable performance increase of 5.5 IoU percentage points on the validation set.
 
+![Augmentation](images/Augmentation.gif)
+
 The code barrows implementation of [range image creation](https://github.com/PRBonn/lidar-bonnetal) and [post-processing KNN](https://github.com/PRBonn/lidar-bonnetal) from previous published works. The code also utilizes the well-known [Segmentation Models Pytorch ](https://github.com/qubvel-org/segmentation_models.pytorch/releases) that enables the user to select from a wide veriety of segmentation architectures (such as, Unet, Unet++, DeepLabV3+, SegFormer, etc.) 
 
 **Key Features:**
