@@ -14,7 +14,7 @@ The code barrows implementation of [range image creation](https://github.com/PRB
 
 **Key Features:**
 
-* **Data Augmentation with Rare-object Injection:** Implements a method to generate new data by injecting rare-object classes.
+* **Data Augmentation with Object Injection:** Implements a method to generate new data by injecting rare-object classes.
 * **Modular Network Architecture:** Designed with flexibility in mind, allowing for the integration of various 2D backbone networks (e.g., Darknet53).
 * **Customizable Data Loading:** Supports custom lidar datasets with provided tools for data preparation and loading.
 * **Common Loss Functions:** Includes implementations of Dice Loss and Jaccard Loss, commonly used for segmentation tasks.
