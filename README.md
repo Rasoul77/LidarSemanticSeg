@@ -75,7 +75,20 @@ python3 -m tools.extract_rare_objects
 The project utilizes YAML files for configuration. You can find example configuration files in the `code/configs` directory.
 
 * `data_config.yaml`: Contains settings related to the dataset, such as file paths, class mappings, and data augmentation parameters.
-* `darknet53.yaml`: An example configuration for a Darknet53-based segmentation model.
+* `unet_darknet53.yaml`: An example configuration for a Darknet53-based segmentation model.
+
+The can configure the loss function to be a combination of `jaccard`, `dice` and `xentropy` by defining the corresponding weights. For example,
+
+```
+  loss:
+    function:
+      - "jaccard"
+      - 0.6
+      - "xentropy"
+      - 0.4
+```
+
+means that the final loss funciton will be `Jaccard_loss() * 0.6 + cross_entropy_loss() * 0.4`.
 
 ### Training
 
