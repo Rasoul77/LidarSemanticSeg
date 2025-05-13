@@ -96,7 +96,7 @@ To train a model, use the `train.py` script with the desired configuration file 
 
 ```bash
 cd code
-python3 train.py --config_name darknet53.yaml --use-wandb --name unet_darknet53_40epochs
+python3 train.py --config_name unet_darknet53.yaml --use-wandb --name unet_darknet53_40epochs
 ```
 
 You should see a progress reporting at the end of each epoch like this:
