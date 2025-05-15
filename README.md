@@ -39,7 +39,7 @@ Ensure you have the following installed:
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/Rasoul77/LidarSemanticSeg.git](https://github.com/Rasoul77/LidarSemanticSeg.git)
+    git clone https://github.com/Rasoul77/LidarSemanticSeg.git
     
     cd LidarSemanticSeg
     ```
