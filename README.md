@@ -126,3 +126,13 @@ pole           59.270%
 traffic-sign   38.455%
 ...
 ```
+
+### Inference
+To run inference on the test set of SemanticKitti dataset, run the following command,
+
+```bash
+cd code
+python3 infer.py --checkpoint_path /path/to/checkpoint/folder/
+```
+
+Note that the checkpoint path shall be the folder that a training run creates.
