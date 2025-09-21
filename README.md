@@ -142,7 +142,7 @@ Note that the checkpoint path shall be the folder that a training run creates.
 If you use this repository in your research or teaching, please cite it as:
 
 ```bibtex
-@misc{yourgithub2025transformer,
+@misc{2025lidarsemanticseg,
   author       = {Rasoul Mojtahedzadeh},
   title        = {LidarSemanticSeg: Lidar Point Cloud Semantic Segmentation using Range Images},
   year         = {2025},
