@@ -136,3 +136,17 @@ python3 infer.py --checkpoint_path /path/to/checkpoint/folder/
 ```
 
 Note that the checkpoint path shall be the folder that a training run creates.
+
+## 📖 Citation
+
+If you use this repository in your research or teaching, please cite it as:
+
+```bibtex
+@misc{yourgithub2025transformer,
+  author       = {Rasoul Mojtahedzadeh},
+  title        = {LidarSemanticSeg: Lidar Point Cloud Semantic Segmentation using Range Images},
+  year         = {2025},
+  publisher    = {GitHub},
+  journal      = {GitHub repository},
+  howpublished = {\url{https://github.com/Rasoul77/LidarSemanticSeg}},
+}
